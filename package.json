@@ -1,6 +1,5 @@
 {
   "name": "intranspiler",
-  "homepage": "https://inPhoenix.github.io/intranspiler",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
