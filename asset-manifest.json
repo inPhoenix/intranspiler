@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/intranspiler/static/js/main.7a7a8168.js",
-    "index.html": "/intranspiler/index.html",
-    "main.7a7a8168.js.map": "/intranspiler/static/js/main.7a7a8168.js.map"
+    "main.js": "/static/js/main.54e9cef8.js",
+    "index.html": "/index.html",
+    "main.54e9cef8.js.map": "/static/js/main.54e9cef8.js.map"
   },
   "entrypoints": [
-    "static/js/main.7a7a8168.js"
+    "static/js/main.54e9cef8.js"
   ]
 }
