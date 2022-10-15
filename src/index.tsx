@@ -11,17 +11,16 @@ const App = () => {
 
   useEffect(() => {
     startService()
-    console.log("Service Started");
-    console.log("%c Service Started", "background: white; color: red", );
+    console.log("%c Service Started", "background: white; color: red");
   }, [])
 
   const startService = async () => {
     ref.current = await esbuild.startService({
       worker: true,
-      wasmURL: "/esbuild.wasm",
+      wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm',
     })
   }
-
+ // unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm
   const onClick = async () => {
     if (!ref.current) {
       return
