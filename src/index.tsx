@@ -11,6 +11,8 @@ const App = () => {
 
   useEffect(() => {
     startService()
+    console.log("Service Started");
+    console.log("%c Service Started", "background: white; color: red", );
   }, [])
 
   const startService = async () => {
