@@ -17,14 +17,19 @@ export const fetchPlugin = (inputCode: string) => {
         }
       })
 
-      build.onLoad({ filter: /.css$/ }, async (args: any) => {
+      // cache mechanism
+      build.onLoad({ filter: /.*/ }, async (args: any) => {
         const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
           args.path
         )
-
         if (cachedResult) {
           return cachedResult
         }
+        return null
+      })
+
+      // css
+      build.onLoad({ filter: /.css$/ }, async (args: any) => {
         const { data, request } = await axios.get(args.path)
         const escaped = data
           .replace(/\n/g, "")
@@ -48,19 +53,9 @@ export const fetchPlugin = (inputCode: string) => {
         return result
       })
 
+      // js
       build.onLoad({ filter: /.*/ }, async (args: any) => {
-        const cachedResult = await fileCache.getItem<esbuild.OnLoadResult>(
-          args.path
-        )
-
-        if (cachedResult) {
-          return cachedResult
-        }
         const { data, request } = await axios.get(args.path)
-        const escaped = data
-          .replace(/\n/g, "")
-          .replace(/"/g, "\\")
-          .replace(/'/g, "\\'")
 
         const result: esbuild.OnLoadResult = {
           loader: "jsx",
