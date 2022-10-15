@@ -11,16 +11,16 @@ const App = () => {
 
   useEffect(() => {
     startService()
-    console.log("%c Service Started", "background: white; color: red");
+    console.log("%c Service Started", "background: white; color: red")
   }, [])
 
   const startService = async () => {
     ref.current = await esbuild.startService({
       worker: true,
-      wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm',
+      wasmURL: "https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm",
     })
   }
- // unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm
+  // unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm
   const onClick = async () => {
     if (!ref.current) {
       return
@@ -39,10 +39,9 @@ const App = () => {
 
   return (
     <div>
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      ></textarea>
+      <div style={{ width: "300px", height: "300px" }}>
+        <textarea value={input} onChange={(e) => setInput(e.target.value)} />
+      </div>
       <div>
         <button onClick={onClick}>Submit</button>
       </div>
