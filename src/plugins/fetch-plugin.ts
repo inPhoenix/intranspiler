@@ -26,14 +26,22 @@ export const fetchPlugin = (inputCode: string) => {
           return cachedResult
         }
         const { data, request } = await axios.get(args.path)
+        const fileType = args.path.match(/.css$/) ? "css" : "jsx"
+
+        const contents =
+          fileType === "css"
+            ? `style = document.createElement('style')
+          style.innerText = 'body { background-color: "red"}'
+          document.head.appendChild(style);
+          `
+            : data
 
         const result: esbuild.OnLoadResult = {
           loader: "jsx",
-          contents: data,
+          contents,
           resolveDir: new URL("./", request.responseURL).pathname,
         }
         await fileCache.setItem(args.path, result)
-
         return result
       })
     },
