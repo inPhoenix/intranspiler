@@ -2,6 +2,7 @@
   "name": "intranspiler",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://inPhoenix.github.io/intranspiler",
   "dependencies": {
     "@emotion/css": "^11.10.0",
     "@emotion/react": "^11.10.4",

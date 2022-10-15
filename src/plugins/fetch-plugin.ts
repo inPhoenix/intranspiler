@@ -23,6 +23,7 @@ export const fetchPlugin = (inputCode: string) => {
           args.path
         )
         if (cachedResult) {
+          console.log("%c using cache", "background: white; color: red");
           return cachedResult
         }
         return null
