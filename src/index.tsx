@@ -4,6 +4,8 @@ import { createRoot } from "react-dom/client"
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin"
 import { fetchPlugin } from "./plugins/fetch-plugin"
 
+const test = `${process.env.PUBLIC_URL}/test.html`
+
 const App = () => {
   const [input, setInput] = useState("")
   const [code, setCode] = useState("")
@@ -38,15 +40,21 @@ const App = () => {
   }
 
   return (
-    <div>
-      <div style={{ width: "300px", height: "300px" }}>
-        <textarea value={input} onChange={(e) => setInput(e.target.value)} />
-      </div>
+    <div style={{ border: "1px solid black", padding: '20px' }}>
       <div>
-        <button onClick={onClick}>Submit</button>
+        <div>
+          <textarea
+            style={{ width: "500px", height: "100px" }}
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+          />
+        </div>
+        <div>
+          <button onClick={onClick}>Submit</button>
+        </div>
       </div>
-
       <pre>{code}</pre>
+      <iframe src={test}/>
     </div>
   )
 }
