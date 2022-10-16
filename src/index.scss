@@ -1,14 +1,24 @@
-body {
-  background: #1c1242;
-  margin: 0;
-  padding: 0;
-}
+@import url("https://fonts.googleapis.com/css?family=Barlow|Tomorrow:400,700&display=swap");
 
 .iframe {
   color: black;
-  background: white;
+  background: #9b8aab;
   iframe {
     width: 100%;
     border: none;
   }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+}
+.button {
+  border: 1px solid red;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+
 }

@@ -3,9 +3,12 @@ import * as esbuild from "esbuild-wasm"
 import { createRoot } from "react-dom/client"
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin"
 import { fetchPlugin } from "./plugins/fetch-plugin"
-import CodeEditor from "./components/CodeEditor"
+import Footer from "./components/Footer/Footer"
+import CodeEditor from "./components/CodeEditor/CodeEditor"
 
+import "bulmaswatch/nuclear/bulmaswatch.min.css"
 import "./index.scss"
+import Header from "./components/Header/Header"
 
 const App = () => {
   const [input, setInput] = useState("")
@@ -66,8 +69,7 @@ const App = () => {
 
   const snippetReact = () => {
     setInput(
-      `
-import React from 'react'
+      `import React from 'react'
 import ReactDOM from 'react-dom'
 const App = () => <h1> Hi There !</h1>
 ReactDOM.render(<App />, document.querySelector('#root'))
@@ -75,16 +77,36 @@ ReactDOM.render(<App />, document.querySelector('#root'))
     )
   }
 
+  const consoleSnippet = () => {
+    setInput(`// Normal Styling
+console.log("%c Hi There", "background: white; color: red");
+
+// We riot
+console.log('つ ◕＿◕ ༽つ we riot!')
+
+// We riot Color
+console.log("%c つ ◕＿◕ ༽つ let's go", "background: deeppink; color: yellow");
+`)
+  }
+
   return (
-    <div
-      style={{
-        border: "1px solid black",
-        padding: "20px",
-        background: "#1c1242",
-      }}
-    >
+    <div className="container">
+      <Header />
       <div>
-        <button onClick={snippetReact}>Code snippet</button>
+        <div className="snippetContainer">
+          <button
+            className="button button-format is-primary is-small is-inverted"
+            onClick={snippetReact}
+          >
+            React snippet
+          </button>
+          <button
+            className="button button-format is-primary is-small is-inverted"
+            onClick={consoleSnippet}
+          >
+            Console snippet
+          </button>
+        </div>
         <div>
           <div style={{ paddingTop: "30px" }}>
             <CodeEditor
@@ -94,7 +116,12 @@ ReactDOM.render(<App />, document.querySelector('#root'))
           </div>
         </div>
         <div>
-          <button onClick={onClick}>Submit</button>
+          <button
+            className="button button-submit is-primary is-small is-inverted"
+            onClick={onClick}
+          >
+            Submit
+          </button>
         </div>
       </div>
       <div className="iframe">
@@ -105,6 +132,7 @@ ReactDOM.render(<App />, document.querySelector('#root'))
           sandbox="allow-scripts"
         />
       </div>
+      <Footer />
     </div>
   )
 }
