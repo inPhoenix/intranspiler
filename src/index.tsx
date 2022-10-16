@@ -8,7 +8,6 @@ const IFRAME = `${process.env.PUBLIC_URL}/test.html`
 
 const App = () => {
   const [input, setInput] = useState("")
-  const [code, setCode] = useState("")
   const ref = useRef<any>()
   const iFrame = useRef<any>()
 
@@ -48,6 +47,7 @@ const App = () => {
     if (!ref.current) {
       return
     }
+    iFrame.current.srcdoc = html
 
     const result = await ref.current.build({
       entryPoints: ["index.js"],
@@ -87,7 +87,6 @@ ReactDOM.render(<App />, document.querySelector('#root'))
           <button onClick={onClick}>Submit</button>
         </div>
       </div>
-      <pre>{code}</pre>
       <iframe
         ref={iFrame}
         srcDoc={html}
