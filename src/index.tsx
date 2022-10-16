@@ -88,8 +88,8 @@ ReactDOM.render(<App />, document.querySelector('#root'))
         <div>
           <div style={{ paddingTop: "30px" }}>
             <CodeEditor
-              value={input}
-              onChange={(e: any) => setInput(e.target.value)}
+              initialValue={input}
+              onChange={(value) => setInput(value)}
             />
           </div>
         </div>
@@ -97,13 +97,13 @@ ReactDOM.render(<App />, document.querySelector('#root'))
           <button onClick={onClick}>Submit</button>
         </div>
       </div>
-      <div className='iframe'>
-      <iframe
-        ref={iFrame}
-        srcDoc={html}
-        title="code preview"
-        sandbox="allow-scripts"
-      />
+      <div className="iframe">
+        <iframe
+          ref={iFrame}
+          srcDoc={html}
+          title="code preview"
+          sandbox="allow-scripts"
+        />
       </div>
     </div>
   )

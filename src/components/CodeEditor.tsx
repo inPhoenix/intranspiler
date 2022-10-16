@@ -2,17 +2,18 @@ import MonacoEditor from "@monaco-editor/react"
 import prettier from "prettier"
 import parserBabel from "prettier/parser-babel"
 
-type IProps = {
+interface CodeEditorProps {
   onChange: (value: string) => void
-  value: string
+  initialValue: string
 }
 
-const CodeEditor = (props: IProps) => {
-  const onEditorChange = (code: string | undefined) =>
+const CodeEditor = (props: CodeEditorProps) => {
+  const onEditorChange = (code: string | undefined) => {
     props.onChange(code || "")
+  }
 
   const onFormatClick = () => {
-    const formattedCode = prettier.format(props.value, {
+    const formattedCode = prettier.format(props.initialValue, {
       parser: "babel",
       plugins: [parserBabel],
       useTabs: false,
@@ -30,7 +31,7 @@ const CodeEditor = (props: IProps) => {
         height={300}
         defaultLanguage="javascript"
         defaultValue=""
-        value={props.value}
+        value={props.initialValue}
         onChange={onEditorChange}
         options={{
           minimap: {
