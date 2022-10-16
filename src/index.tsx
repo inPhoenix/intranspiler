@@ -71,7 +71,15 @@ const App = () => {
     setInput(
       `import React from 'react'
 import ReactDOM from 'react-dom'
-const App = () => <h1> Hi There !</h1>
+
+const App = () => {
+  const [state, setState] = React.useState('Hi There')
+  return (
+    <div>
+      <div style={{ color: 'yellow' }}>{state}</div>
+    </div>
+  )
+}
 ReactDOM.render(<App />, document.querySelector('#root'))
       `
     )
