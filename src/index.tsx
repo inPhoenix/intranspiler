@@ -3,8 +3,9 @@ import * as esbuild from "esbuild-wasm"
 import { createRoot } from "react-dom/client"
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin"
 import { fetchPlugin } from "./plugins/fetch-plugin"
+import CodeEditor from "./components/CodeEditor"
 
-const IFRAME = `${process.env.PUBLIC_URL}/test.html`
+import "./index.scss"
 
 const App = () => {
   const [input, setInput] = useState("")
@@ -12,8 +13,10 @@ const App = () => {
   const iFrame = useRef<any>()
 
   const html = `
-    <html>
-      <head></head>
+    <html lang="en">
+      <head>
+       <title>CyberPunk Editor</title>
+      </head>
       <body>
         <div id="root"></div>
         <script>
@@ -73,26 +76,35 @@ ReactDOM.render(<App />, document.querySelector('#root'))
   }
 
   return (
-    <div style={{ border: "1px solid black", padding: "20px" }}>
+    <div
+      style={{
+        border: "1px solid black",
+        padding: "20px",
+        background: "#1c1242",
+      }}
+    >
       <div>
         <button onClick={snippetReact}>Code snippet</button>
         <div>
-          <textarea
-            style={{ width: "500px", height: "100px" }}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
+          <div style={{ paddingTop: "30px" }}>
+            <CodeEditor
+              value={input}
+              onChange={(e: any) => setInput(e.target.value)}
+            />
+          </div>
         </div>
         <div>
           <button onClick={onClick}>Submit</button>
         </div>
       </div>
+      <div className='iframe'>
       <iframe
         ref={iFrame}
         srcDoc={html}
         title="code preview"
         sandbox="allow-scripts"
       />
+      </div>
     </div>
   )
 }
