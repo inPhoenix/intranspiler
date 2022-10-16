@@ -37,7 +37,7 @@ const CodeEditor = (props: CodeEditorProps) => {
       </button>
       <MonacoEditor
         theme="vs-dark"
-        height={300}
+        height={400}
         defaultLanguage="javascript"
         defaultValue=""
         value={props.initialValue}
