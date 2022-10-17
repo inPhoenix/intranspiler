@@ -5,10 +5,10 @@ import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin"
 import { fetchPlugin } from "./plugins/fetch-plugin"
 import Footer from "./components/Footer/Footer"
 import CodeEditor from "./components/CodeEditor/CodeEditor"
+import Header from "./components/Header/Header"
 
 import "bulmaswatch/nuclear/bulmaswatch.min.css"
 import "./index.scss"
-import Header from "./components/Header/Header"
 
 const App = () => {
   const [input, setInput] = useState("")
@@ -98,23 +98,9 @@ console.log("%c つ ◕＿◕ ༽つ let's go", "background: deeppink; color: ye
   }
 
   return (
-    <div className="container">
-      <Header />
+    <div className="mainWrapper">
+      <Header snippetReact={snippetReact} consoleSnippet={consoleSnippet} />
       <div>
-        <div className="snippetContainer">
-          <button
-            className="button button-format is-primary is-small is-inverted"
-            onClick={snippetReact}
-          >
-            React snippet
-          </button>
-          <button
-            className="button button-format is-primary is-small is-inverted"
-            onClick={consoleSnippet}
-          >
-            Console snippet
-          </button>
-        </div>
         <div>
           <div style={{ paddingTop: "30px" }}>
             <CodeEditor
@@ -125,7 +111,7 @@ console.log("%c つ ◕＿◕ ༽つ let's go", "background: deeppink; color: ye
         </div>
         <div>
           <button
-            className="button button-submit is-primary is-small is-inverted"
+            className="button button-submit is-primary"
             onClick={onClick}
           >
             Submit
