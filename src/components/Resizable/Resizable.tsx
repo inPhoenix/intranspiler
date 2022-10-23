@@ -5,9 +5,10 @@ import "./Resizable.scss"
 interface ResizableProps {
   direction?: "horizontal" | "vertical"
   children?: React.ReactNode
+  off?: boolean
 }
 
-const Resizable = ({ direction, children }: ResizableProps) => {
+const Resizable = ({ direction, children, off = false }: ResizableProps) => {
   const [innerHeight, setInnerHeight] = useState(window.innerHeight)
   const [innerWidth, setInnerWidth] = useState(window.innerWidth)
 
@@ -46,6 +47,9 @@ const Resizable = ({ direction, children }: ResizableProps) => {
       height: 400,
       width: Infinity,
     }
+  }
+  if (off) {
+    return <div className="full-height">{children}</div>
   }
   return <ResizableBox {...resizableProps}>{children}</ResizableBox>
 }

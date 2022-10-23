@@ -28,7 +28,7 @@ const CodeCell = () => {
   return (
     <div className="mainWrapper">
       <Header snippetReact={snippetReact} consoleSnippet={consoleSnippet} />
-      <Resizable direction="vertical">
+      <Resizable off={true}>
         <div style={{ display: "flex", height: "100%", flexDirection: "row" }}>
           <Resizable direction="horizontal">
             <CodeEditor
