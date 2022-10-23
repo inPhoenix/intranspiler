@@ -10,8 +10,19 @@
     opacity: 0;
     transition: opacity 0.3s;
   }
+  .button-execute {
+    position: absolute;
+    bottom: -9px;
+    right: 100px;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
   &:hover {
     .button-format {
+      opacity: 1;
+    }
+    .button-execute {
       opacity: 1;
     }
   }

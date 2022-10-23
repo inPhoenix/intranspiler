@@ -32,6 +32,7 @@ const CodeCell = () => {
         <div style={{ display: "flex", height: "100%", flexDirection: "row" }}>
           <Resizable direction="horizontal">
             <CodeEditor
+              handleClick={onClick}
               initialValue={input}
               onChange={(value) => setInput(value)}
             />

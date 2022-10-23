@@ -7,6 +7,7 @@ import "./CodeEditor.scss"
 interface CodeEditorProps {
   onChange: (value: string) => void
   initialValue: string
+  handleClick: () => void
 }
 
 const CodeEditor = (props: CodeEditorProps) => {
@@ -34,6 +35,12 @@ const CodeEditor = (props: CodeEditorProps) => {
         onClick={onFormatClick}
       >
         FORMAT
+      </button>
+      <button
+        className="button button-execute is-primary is-small is-inverted"
+        onClick={props.handleClick}
+      >
+        EXECUTE
       </button>
       <MonacoEditor
         theme="vs-dark"
