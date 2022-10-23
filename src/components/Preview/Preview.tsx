@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react"
+import "./Preview.scss"
 
 interface PreviewProps {
   code: string
@@ -32,13 +33,16 @@ const Preview = ({ code }: PreviewProps) => {
     iframe.current.contentWindow.postMessage(code, "*")
   }, [code])
 
-  return <iframe
-    title='preview'
-    ref={iframe}
-    sandbox='allow-scripts'
-    srcDoc={html}
-
-  ></iframe>
+  return (
+    <div className="previewWrapper">
+      <iframe
+        title="preview"
+        ref={iframe}
+        sandbox="allow-scripts"
+        srcDoc={html}
+      ></iframe>
+    </div>
+  )
 }
 
 export default Preview

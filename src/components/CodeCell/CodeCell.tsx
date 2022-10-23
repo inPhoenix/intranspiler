@@ -2,8 +2,8 @@ import { useState } from "react"
 import Footer from "../Footer/Footer"
 import CodeEditor from "../CodeEditor/CodeEditor"
 import bundle from "../../blundler"
+import Resizable from "../Resizable/Resizable"
 import Header from "../Header/Header"
-
 import Preview from "../Preview/Preview"
 import ReactSnippet from "../Snippets/ReactSnippet"
 import ConsoleSnippet from "../Snippets/ConsoleSnippet"
@@ -28,24 +28,17 @@ const CodeCell = () => {
   return (
     <div className="mainWrapper">
       <Header snippetReact={snippetReact} consoleSnippet={consoleSnippet} />
-      <div>
-        <div>
-          <div style={{ paddingTop: "30px" }}>
+      <Resizable direction="vertical">
+        <div style={{ display: "flex", height: "100%", flexDirection: "row" }}>
+          <Resizable direction="horizontal">
             <CodeEditor
               initialValue={input}
               onChange={(value) => setInput(value)}
             />
-          </div>
+          </Resizable>
+          <Preview code={code} />
         </div>
-        <div>
-          <button className="button button-submit is-primary" onClick={onClick}>
-            Submit
-          </button>
-        </div>
-      </div>
-      <div className="iframe">
-        <Preview code={code} />
-      </div>
+      </Resizable>
       <Footer />
     </div>
   )

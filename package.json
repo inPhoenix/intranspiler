@@ -15,7 +15,7 @@
     "@types/node": "^16.11.64",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
-    "@types/react-resizable": "^3.0.3",
+    "@types/react-resizable": "3.0.2",
     "axios": "^1.1.2",
     "bulmaswatch": "^0.8.1",
     "esbuild-wasm": "0.8.27",
