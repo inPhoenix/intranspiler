@@ -6,36 +6,17 @@ import { fetchPlugin } from "./plugins/fetch-plugin"
 import Footer from "./components/Footer/Footer"
 import CodeEditor from "./components/CodeEditor/CodeEditor"
 import Header from "./components/Header/Header"
+import Preview from "./components/Preview/Preview"
 
 import "bulmaswatch/nuclear/bulmaswatch.min.css"
 import "./index.scss"
+import ReactSnippet from "./components/Snippets/ReactSnippet"
+import ConsoleSnippet from "./components/Snippets/ConsoleSnippet"
 
 const App = () => {
   const [input, setInput] = useState("")
+  const [code, setCode] = useState("")
   const ref = useRef<any>()
-  const iFrame = useRef<any>()
-
-  const html = `
-    <html lang="en">
-      <head>
-       <title>CyberPunk Editor</title>
-      </head>
-      <body>
-        <div id="root"></div>
-        <script>
-          window.addEventListener('message', (event) => {
-            try {
-            eval(event.data)  
-            } catch(err) {
-              console.log('%c error', 'background: white; color: red', err);
-              const root = document.querySelector('#root')
-              root.innerHTML = '<div style="color: red">' + err + '</div>'
-            }
-          }, false)
-        </script>
-      </body>  
-    </html>
-  `
 
   useEffect(() => {
     startService()
@@ -53,7 +34,6 @@ const App = () => {
     if (!ref.current) {
       return
     }
-    iFrame.current.srcdoc = html
 
     const result = await ref.current.build({
       entryPoints: ["index.js"],
@@ -63,38 +43,15 @@ const App = () => {
       define: { "process.env.NODE_ENV": '"production"', global: "window" },
     })
 
-    // setCode(result.outputFiles[0].text)
-    iFrame.current.contentWindow.postMessage(result.outputFiles[0].text, "*")
+    setCode(result.outputFiles[0].text)
   }
 
   const snippetReact = () => {
-    setInput(
-      `import React from 'react'
-import ReactDOM from 'react-dom'
-
-const App = () => {
-  const [state, setState] = React.useState('Hi There')
-  return (
-    <div>
-      <div style={{ color: 'yellow' }}>{state}</div>
-    </div>
-  )
-}
-ReactDOM.render(<App />, document.querySelector('#root'))
-      `
-    )
+    setInput(ReactSnippet)
   }
 
   const consoleSnippet = () => {
-    setInput(`// Normal Styling
-console.log("%c Hi There", "background: white; color: red");
-
-// We riot
-console.log('つ ◕＿◕ ༽つ we riot!')
-
-// We riot Color
-console.log("%c つ ◕＿◕ ༽つ let's go", "background: deeppink; color: yellow");
-`)
+    setInput(ConsoleSnippet)
   }
 
   return (
@@ -110,21 +67,13 @@ console.log("%c つ ◕＿◕ ༽つ let's go", "background: deeppink; color: ye
           </div>
         </div>
         <div>
-          <button
-            className="button button-submit is-primary"
-            onClick={onClick}
-          >
+          <button className="button button-submit is-primary" onClick={onClick}>
             Submit
           </button>
         </div>
       </div>
       <div className="iframe">
-        <iframe
-          ref={iFrame}
-          srcDoc={html}
-          title="code preview"
-          sandbox="allow-scripts"
-        />
+        <Preview code={code} />
       </div>
       <Footer />
     </div>
