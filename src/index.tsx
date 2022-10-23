@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import bundle from "./blundler"
 import { createRoot } from "react-dom/client"
 import Footer from "./components/Footer/Footer"
