@@ -12,9 +12,15 @@ const Resizable = ({ direction, children }: ResizableProps) => {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth)
 
   useEffect(() => {
+    let timer: any
+    if (timer) {
+      clearTimeout(timer)
+    }
     const listener = () => {
-      setInnerHeight(window.innerHeight)
-      setInnerWidth(window.innerWidth)
+      setTimeout(() => {
+        setInnerHeight(window.innerHeight)
+        setInnerWidth(window.innerWidth)
+      }, 200)
     }
     window.addEventListener("resize", listener)
     return () => {
