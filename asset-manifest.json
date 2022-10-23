@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/intranspiler/static/css/main.8c6235ee.css",
-    "main.js": "/intranspiler/static/js/main.3de06b49.js",
+    "main.css": "/intranspiler/static/css/main.6e266eb0.css",
+    "main.js": "/intranspiler/static/js/main.a001ec0f.js",
     "index.html": "/intranspiler/index.html",
-    "main.8c6235ee.css.map": "/intranspiler/static/css/main.8c6235ee.css.map",
-    "main.3de06b49.js.map": "/intranspiler/static/js/main.3de06b49.js.map"
+    "main.6e266eb0.css.map": "/intranspiler/static/css/main.6e266eb0.css.map",
+    "main.a001ec0f.js.map": "/intranspiler/static/js/main.a001ec0f.js.map"
   },
   "entrypoints": [
-    "static/css/main.8c6235ee.css",
-    "static/js/main.3de06b49.js"
+    "static/css/main.6e266eb0.css",
+    "static/js/main.a001ec0f.js"
   ]
 }
