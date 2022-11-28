@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Barlow|Tomorrow:400,700&display=swap");
 
+.wrapper {
+  display: flex;
+}
+
 .mainWrapper {
   display: flex;
   flex-direction: column;

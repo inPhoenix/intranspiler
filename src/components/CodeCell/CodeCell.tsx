@@ -8,21 +8,25 @@ import Preview from "../Preview/Preview"
 import ReactSnippet from "../Snippets/ReactSnippet"
 import ConsoleSnippet from "../Snippets/ConsoleSnippet"
 
-const CodeCell = () => {
-  const [input, setInput] = useState("")
+interface CodeCellProps {
+  remoteInput?: any
+  setRemoteInput?: any
+}
+
+const CodeCell = ({ remoteInput, setRemoteInput }: CodeCellProps) => {
   const [code, setCode] = useState("")
 
   const onClick = async () => {
-    const output = await bundle(input)
+    const output = await bundle(remoteInput)
     setCode(output)
   }
 
   const snippetReact = () => {
-    setInput(ReactSnippet)
+    setRemoteInput(ReactSnippet)
   }
 
   const consoleSnippet = () => {
-    setInput(ConsoleSnippet)
+    setRemoteInput(ConsoleSnippet)
   }
 
   return (
@@ -33,8 +37,8 @@ const CodeCell = () => {
           <Resizable direction="horizontal">
             <CodeEditor
               handleClick={onClick}
-              initialValue={input}
-              onChange={(value) => setInput(value)}
+              initialValue={remoteInput}
+              onChange={(value) => setRemoteInput(value)}
             />
           </Resizable>
           <Preview code={code} />
