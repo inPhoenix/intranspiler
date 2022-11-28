@@ -1,5 +1,35 @@
 .WrapperEditor {
   position: relative;
+  .monaco-editor,
+  .monaco-editor-background,
+  .monaco-editor .inputarea.ime-input {
+    background-color: #06022a;
+  }
+
+  .monaco-editor .margin {
+    background-color: #303235;
+  }
+
+  .mtk1 {
+    color: #ec03e8;
+  }
+
+  .mtk20 {
+    color: #e71232;
+  }
+
+  .mtk5 {
+    color: #43f311;
+  }
+
+  .mtk6 {
+    color: #160bb0;
+  }
+
+  .mtk22 {
+    color: #ffee2f;
+  }
+
   height: 100%;
   width: calc(100% - 10px);
   .button-format {
