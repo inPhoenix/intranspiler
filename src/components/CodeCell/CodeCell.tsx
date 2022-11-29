@@ -44,7 +44,6 @@ const CodeCell = ({ remoteInput, setRemoteInput }: CodeCellProps) => {
           <Preview code={code} />
         </div>
       </Resizable>
-      <Footer />
     </div>
   )
 }

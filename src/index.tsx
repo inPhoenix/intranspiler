@@ -5,6 +5,7 @@ import { useState } from "react"
 
 import "bulmaswatch/nuclear/bulmaswatch.min.css"
 import "./index.scss"
+import Footer from "./components/Footer/Footer"
 
 const App = () => {
   const [help, setHelp] = useState(false)
@@ -14,15 +15,20 @@ const App = () => {
     setHelp(!help)
   }
   return (
-    <div>
-      <div className="wrapper">
-        <CyberHelp
-          setRemoteInput={setRemoteInput}
-          handleClick={handleHelp}
-          help={help}
-        />
-        <CodeCell remoteInput={remoteInput} setRemoteInput={setRemoteInput} />
+    <div className="wrapper">
+      <div className="floatContainer">
+        <div className="bar">
+          <CyberHelp
+            setRemoteInput={setRemoteInput}
+            handleClick={handleHelp}
+            help={help}
+          />
+        </div>
+        <div className="editor">
+          <CodeCell remoteInput={remoteInput} setRemoteInput={setRemoteInput} />
+        </div>
       </div>
+      <Footer />
     </div>
   )
 }

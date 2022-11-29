@@ -26,12 +26,14 @@ export const CyberHelp = ({
       position: "absolute" as "absolute",
       width: "20%",
       height: "100%",
+      top: 0,
     },
     enter: {
       opacity: 1,
       transform: "translate3d(0%,0,0)",
       position: "absolute" as "absolute",
       zIndex: 4000,
+      top: 0,
     },
     leave: {
       opacity: 0,
