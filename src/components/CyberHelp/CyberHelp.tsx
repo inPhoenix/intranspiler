@@ -4,6 +4,7 @@ import * as S from "./styles"
 import ReactSnippet from "../Snippets/ReactSnippet"
 import Algo1 from "../Snippets/Algo1"
 import Algo2 from "../Snippets/Algo2"
+import Algo3 from "../Snippets/Algo3";
 
 const cyberPunkGuyOnBuilding =
   process.env.PUBLIC_URL + "/assets/pics/cyberpunk.gif"
@@ -19,6 +20,20 @@ export const CyberHelp = ({
   help,
   setRemoteInput,
 }: ICyberHelp) => {
+  const renderAlgo = (n: any) => {
+    const createString = 'Algo' + n
+    return (
+      <button
+        className="button button-execute is-primary is-small is-inverted"
+        onClick={() => {
+          setRemoteInput(Algo3)
+          handleClick()
+        }}
+      >
+        Algorithm {n}
+      </button>
+    )
+  }
   const transitions = useTransition(help, {
     from: {
       opacity: 0,
@@ -73,6 +88,7 @@ export const CyberHelp = ({
           >
             Algorithm 2
           </button>
+          {renderAlgo(3)}
         </S.Wrapper>
       </animated.div>
     ) : (
