@@ -1,13 +1,10 @@
 import { useTransition, animated, config } from "react-spring"
 
 import * as S from "./styles"
-import ReactSnippet from "../Snippets/ReactSnippet"
 import Algo1 from "../Snippets/Algo1"
 import Algo2 from "../Snippets/Algo2"
-import Algo3 from "../Snippets/Algo3";
-
-const cyberPunkGuyOnBuilding =
-  process.env.PUBLIC_URL + "/assets/pics/cyberpunk.gif"
+import Algo3 from "../Snippets/Algo3"
+import Algo4 from "../Snippets/Algo4"
 
 interface ICyberHelp {
   handleClick: any
@@ -15,13 +12,26 @@ interface ICyberHelp {
   setRemoteInput?: any
 }
 
+const algo3 = Algo3
+const algo4 = Algo4
+
 export const CyberHelp = ({
   handleClick,
   help,
   setRemoteInput,
 }: ICyberHelp) => {
-  const renderAlgo = (n: any) => {
-    const createString = 'Algo' + n
+  let decider = ""
+  const renderAlgo = (n: number, title?: string) => {
+    switch (n) {
+      case 3: {
+        decider = algo3
+        break
+      }
+      case 4: {
+        decider = algo4
+        break
+      }
+    }
     return (
       <button
         className="button button-execute is-primary is-small is-inverted"
@@ -30,7 +40,7 @@ export const CyberHelp = ({
           handleClick()
         }}
       >
-        Algorithm {n}
+        {title ? title : `Algorithm ${n}`}
       </button>
     )
   }
@@ -77,7 +87,7 @@ export const CyberHelp = ({
               handleClick()
             }}
           >
-            Algorithm 1
+            Spread Operator
           </button>
           <button
             className="button button-execute is-primary is-small is-inverted"
@@ -86,9 +96,10 @@ export const CyberHelp = ({
               handleClick()
             }}
           >
-            Algorithm 2
+            FizzBuzz
           </button>
-          {renderAlgo(3)}
+          {renderAlgo(3, "String Reversal")}
+          {renderAlgo(4)}
         </S.Wrapper>
       </animated.div>
     ) : (

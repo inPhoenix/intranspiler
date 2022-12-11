@@ -1,20 +1,30 @@
 const Algo3 = `import React from 'react'
 import ReactDOM from 'react-dom'
 
+// Given a string, return a new string with the reversed order
+// Example: apple -> leppa
+
 const App = () => {
-  const [state, setState] = React.useState('Algorithm 3')
-  const array = [
-    { name: 'facebook', icon: 'facebook' },
-    { name: 'cyberpunk', icon: 'cyber' },
-  ]
-  const test = { name: 'wechat', icon: 'wechat' }
-  const novoArray = [...array, test]
+  const [state, setState] = React.useState('apple')
+  const reverse = () => {
+    const arr = state.split('') // owhoo im an array
+    const copyArray = [...arr]
+    copyArray.reverse()
+    const final = copyArray.join('')
+    setState(final) 
+}
+
+  const handleChange = (e) => {
+    setState(e.target.value)
+  }
 
   return (
     <div>
-      {novoArray.map((social) => {
-        return <div>{social.name}</div>
-      })}
+    <input value={state} onChange={handleChange}/>
+     <button onClick={reverse}>Reverse</button>
+     <div>
+     String: {state}
+     </div>
     </div>
   )
 }

@@ -20,6 +20,7 @@ export const Wrapper = styled.div`
   background: #0c0c01;
   display: flex;
   flex-direction: column;
+  align-items: stretch;
 `
 
 export const Closed = styled.div`
