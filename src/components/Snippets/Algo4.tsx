@@ -1,20 +1,30 @@
 const Algo4 = `import React from 'react'
 import ReactDOM from 'react-dom'
 
+// Given a string, check if it is a palindrome
+// Example: abba = true
+
 const App = () => {
-  const [state, setState] = React.useState('Algorithm 4')
-  const array = [
-    { name: 'facebook', icon: 'facebook' },
-    { name: 'cyberpunk', icon: 'cyber' },
-  ]
-  const test = { name: 'wechat', icon: 'wechat' }
-  const novoArray = [...array, test]
+  const [state, setState] = React.useState('abba')
+  const [isPalindrome, setPalindrome] = React.useState('false')
+  const palindrome = () => {
+    const copyArr = [...state.split('')]
+    copyArr.reverse()
+    const isReverse = copyArr.join('') === state
+    setPalindrome(isReverse ? 'true' : 'false') 
+}
+
+  const handleChange = (e) => {
+    setState(e.target.value)
+  }
 
   return (
     <div>
-      {novoArray.map((social) => {
-        return <div>{social.name}</div>
-      })}
+    <input value={state} onChange={handleChange}/>
+     <button onClick={palindrome}>Palindrome</button>
+     <div>
+     Is {state} Palindrome?: {isPalindrome}
+     </div>
     </div>
   )
 }

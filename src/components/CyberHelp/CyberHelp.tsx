@@ -36,7 +36,7 @@ export const CyberHelp = ({
       <button
         className="button button-execute is-primary is-small is-inverted"
         onClick={() => {
-          setRemoteInput(Algo3)
+          setRemoteInput(decider)
           handleClick()
         }}
       >
@@ -99,7 +99,7 @@ export const CyberHelp = ({
             FizzBuzz
           </button>
           {renderAlgo(3, "String Reversal")}
-          {renderAlgo(4)}
+          {renderAlgo(4, "Palindrome")}
         </S.Wrapper>
       </animated.div>
     ) : (
