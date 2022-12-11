@@ -1,4 +1,5 @@
 import { useTransition, animated, config } from "react-spring"
+import { Code } from "@emotion-icons/material"
 
 import * as S from "./styles"
 import Algo1 from "../Snippets/Algo1"
@@ -104,7 +105,9 @@ export const CyberHelp = ({
       </animated.div>
     ) : (
       <S.Closed onClick={handleClick}>
-        <S.Text>Help</S.Text>
+        <S.Text>
+          <Code />
+        </S.Text>
       </S.Closed>
     )
   })

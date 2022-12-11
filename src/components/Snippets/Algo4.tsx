@@ -6,12 +6,14 @@ import ReactDOM from 'react-dom'
 
 const App = () => {
   const [state, setState] = React.useState('abba')
-  const [isPalindrome, setPalindrome] = React.useState('false')
+  const [isPalindrome, setPalindrome] = React.useState('')
+ 
   const palindrome = () => {
     const copyArr = state.split('').reverse() // split returns a new array
     const isReverse = copyArr.join('') === state
-    setPalindrome(isReverse ? 'true' : 'false') 
+    setPalindrome(isReverse ? 'TRUE' : 'FALSE') 
 }
+
 
   const handleChange = (e) => {
     setState(e.target.value)
@@ -22,7 +24,7 @@ const App = () => {
     <input value={state} onChange={handleChange}/>
      <button onClick={palindrome}>Palindrome</button>
      <div>
-     Is {state} Palindrome?: {isPalindrome}
+     Is {state} Palindrome? <div style={{color: 'yellow'}}>{isPalindrome}</div>
      </div>
     </div>
   )
