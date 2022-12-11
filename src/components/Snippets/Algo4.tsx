@@ -8,8 +8,7 @@ const App = () => {
   const [state, setState] = React.useState('abba')
   const [isPalindrome, setPalindrome] = React.useState('false')
   const palindrome = () => {
-    const copyArr = [...state.split('')]
-    copyArr.reverse()
+    const copyArr = state.split('').reverse() // split returns a new array
     const isReverse = copyArr.join('') === state
     setPalindrome(isReverse ? 'true' : 'false') 
 }

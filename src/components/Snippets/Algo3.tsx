@@ -7,8 +7,7 @@ import ReactDOM from 'react-dom'
 const App = () => {
   const [state, setState] = React.useState('apple')
   const reverse = () => {
-    const arr = state.split('') // owhoo im an array
-    const copyArray = [...arr]
+    const copyArray = state.split('') // owhoo im an array copied
     copyArray.reverse()
     const final = copyArray.join('')
     setState(final) 
