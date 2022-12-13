@@ -6,6 +6,7 @@ import Algo1 from "../Snippets/Algo1"
 import Algo2 from "../Snippets/Algo2"
 import Algo3 from "../Snippets/Algo3"
 import Algo4 from "../Snippets/Algo4"
+import Algo5 from "../Snippets/Algo5"
 
 interface ICyberHelp {
   handleClick: any
@@ -15,6 +16,7 @@ interface ICyberHelp {
 
 const algo3 = Algo3
 const algo4 = Algo4
+const algo5 = Algo5
 
 export const CyberHelp = ({
   handleClick,
@@ -30,6 +32,14 @@ export const CyberHelp = ({
       }
       case 4: {
         decider = algo4
+        break
+      }
+      case 5: {
+        decider = algo5
+        break
+      }
+      case 6: {
+        decider = "algo6"
         break
       }
     }
@@ -101,6 +111,7 @@ export const CyberHelp = ({
           </button>
           {renderAlgo(3, "String Reversal")}
           {renderAlgo(4, "Palindrome")}
+          {renderAlgo(5, "Counter")}
         </S.Wrapper>
       </animated.div>
     ) : (
