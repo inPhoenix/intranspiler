@@ -12,20 +12,15 @@ const App = () => {
     const copyArr = state.split('').reverse() // split returns a new array
     const isReverse = copyArr.join('') === state
     setPalindrome(isReverse ? 'TRUE' : 'FALSE') 
-}
-
-
-  const handleChange = (e) => {
-    setState(e.target.value)
   }
 
   return (
     <div>
-    <input value={state} onChange={handleChange}/>
-     <button onClick={palindrome}>Palindrome</button>
-     <div>
-     Is {state} Palindrome? <div style={{color: 'yellow'}}>{isPalindrome}</div>
-     </div>
+      <input value={state} onChange={(e) => setState(e.target.value)} />
+      <button onClick={palindrome}>Palindrome</button>
+      <div>
+        Is {state} Palindrome? <div style={{color: 'yellow'}}>{isPalindrome}</div>
+      </div>
     </div>
   )
 }

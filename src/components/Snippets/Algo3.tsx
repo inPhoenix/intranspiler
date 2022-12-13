@@ -6,24 +6,21 @@ import ReactDOM from 'react-dom'
 
 const App = () => {
   const [state, setState] = React.useState('apple')
+  
   const reverse = () => {
     const copyArray = state.split('') // owhoo im an array copied
     copyArray.reverse()
     const final = copyArray.join('')
     setState(final) 
-}
-
-  const handleChange = (e) => {
-    setState(e.target.value)
   }
 
-  return (
+    return (
     <div>
-    <input value={state} onChange={handleChange}/>
-     <button onClick={reverse}>Reverse</button>
-     <div>
-     String: {state}
-     </div>
+      <input value={state} onChange={(e) => setState(e.target.value)} />
+      <button onClick={reverse}>Reverse</button>
+      <div>
+        String: {state}
+      </div>
     </div>
   )
 }
