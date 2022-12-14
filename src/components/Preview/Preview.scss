@@ -1,3 +1,5 @@
+$backgroundPreview: #471a81;
+
 .react-draggable-transparent-selection {
   .previewWrapper {
     &:after {
@@ -15,7 +17,7 @@
 .previewWrapper {
   position: relative;
   color: black;
-  background: #9b8aab;
+  background: $backgroundPreview;
   height: 100%;
   flex-grow: 1;
   border: none;
