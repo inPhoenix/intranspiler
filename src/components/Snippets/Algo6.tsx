@@ -1,4 +1,4 @@
-const Algo5 = `import React from 'react'
+const Algo6 = `import React from 'react'
 import ReactDOM from 'react-dom'
 
 const App = () => {
@@ -36,4 +36,4 @@ const App = () => {
   )
 }
 ReactDOM.render(<App />, document.querySelector('#root'))`
-export default Algo5
+export default Algo6

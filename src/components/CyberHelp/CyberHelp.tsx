@@ -1,7 +1,6 @@
 import { useTransition, animated, config } from "react-spring"
 import { Code } from "@emotion-icons/material"
 
-import * as S from "./styles"
 import Algo1 from "../Snippets/Algo1"
 import Algo2 from "../Snippets/Algo2"
 import Algo3 from "../Snippets/Algo3"
@@ -9,51 +8,35 @@ import Algo4 from "../Snippets/Algo4"
 import Algo5 from "../Snippets/Algo5"
 import Algo6 from "../Snippets/Algo6"
 
+import * as S from "./styles"
+
+const algoMap: any = {
+  1: Algo1,
+  2: Algo2,
+  3: Algo3,
+  4: Algo4,
+  5: Algo5,
+  6: Algo6,
+}
+
 interface ICyberHelp {
   handleClick: any
   help: boolean
   setRemoteInput?: any
 }
 
-const algo3 = Algo3
-const algo4 = Algo4
-const algo5 = Algo5
-const algo6 = Algo6
-
 export const CyberHelp = ({
   handleClick,
   help,
   setRemoteInput,
 }: ICyberHelp) => {
-  let decider = ""
   const renderAlgo = (n: number, title?: string) => {
-    switch (n) {
-      case 3: {
-        decider = algo3
-        break
-      }
-      case 4: {
-        decider = algo4
-        break
-      }
-      case 5: {
-        decider = algo5
-        break
-      }
-      case 6: {
-        decider = algo6
-        break
-      }
-      case 6: {
-        decider = "algo6"
-        break
-      }
-    }
     return (
       <button
+        id={`${n}`}
         className="button button-execute is-primary is-small is-inverted"
         onClick={() => {
-          setRemoteInput(decider)
+          setRemoteInput(algoMap[n])
           handleClick()
         }}
       >
@@ -90,31 +73,8 @@ export const CyberHelp = ({
     return item ? (
       <animated.div style={styles}>
         <S.Wrapper>
-          <S.CloseButton
-            onClick={handleClick}
-            role="button"
-            aria-label="close button"
-          >
-            Close
-          </S.CloseButton>
-          <button
-            className="button button-execute is-primary is-small is-inverted"
-            onClick={() => {
-              setRemoteInput(Algo1)
-              handleClick()
-            }}
-          >
-            Spread Operator
-          </button>
-          <button
-            className="button button-execute is-primary is-small is-inverted"
-            onClick={() => {
-              setRemoteInput(Algo2)
-              handleClick()
-            }}
-          >
-            FizzBuzz
-          </button>
+          {renderAlgo(1, "Spread Operator")}
+          {renderAlgo(2, "FizzBuzz")}
           {renderAlgo(3, "String Reversal")}
           {renderAlgo(4, "Palindrome")}
           {renderAlgo(5, "Counter")}
